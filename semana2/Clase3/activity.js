@@ -22,3 +22,14 @@ const libreria = (c) =>{
 }
 
 libreria("libroc");
+
+
+const bill = (product, tax) =>{
+    let total=0;
+    for(let i=0; i < product.length; i++){
+        total += product[i] + product[i] * tax;
+    }
+    return total;
+}
+
+console.log('bill', bill([10,12,15], 0.18));

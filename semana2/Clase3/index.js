@@ -32,5 +32,15 @@ const square = x => {
 
 square(5);
 
-const squaresimpify = x => x*x;;
+const squaresimpify = x => console.log('squaresimpify',x*x)
 squaresimpify(7);
+
+const bill = (product, tax) =>{
+    let total=0;
+    for(let i=0; i < product.length; i++){
+        total += product[i] + product[i] * tax;
+    }
+    return total;
+}
+
+console.log('bill', bill([10,12,15], 0.18));

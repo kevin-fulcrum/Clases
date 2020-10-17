@@ -5,7 +5,7 @@ function cantidadVocales(cadena){
     let vocales = "";
     for(letra of cadena){
         
-        if (letra == 'a' || letra == 'e' || letra == 'i' || letra == 'o' || letra == 'u'){            
+        if (letra == 'a' || letra == 'e' || letra == 'i' || letra == 'o' || letra == 'u' || letra == 'A' || letra == 'E' || letra == 'I' || letra == 'O' || letra == 'U'){            
             contador ++;
             vocales+=letra + " ";
         }
@@ -15,4 +15,4 @@ function cantidadVocales(cadena){
     return contador;
 }
 
-cantidadVocales("Hola, ¿como estas?")
+cantidadVocales("HOla, ¿como estas?")

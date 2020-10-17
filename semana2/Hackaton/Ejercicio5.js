@@ -17,7 +17,7 @@ function formatoMiles(number){
 
 formatoMiles(10000.185)
 
-//primera forma
+//segunda forma
 
 function miles_separador(number){
     number = number.toString();

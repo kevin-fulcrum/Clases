@@ -144,7 +144,7 @@ let facturas = [
 function sumProductos() {
     let y=0;
     for (x of facturas){
-        y += x.totalPrice  
+        y += x.products.price  
     }
     console.log(y)
 }

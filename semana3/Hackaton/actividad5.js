@@ -10,7 +10,7 @@ let numeros = [50,12,15,25,3,5]
 miSort(numeros,propiedad);*/
 
 //primera forma
-function propiedad(arreglo){
+/*function propiedad(arreglo){
     console.log(arreglo);
 }
 
@@ -29,7 +29,7 @@ function miSort (a,callback){
 }
 
 let numeros = [50,12,15,25,3,5]
-miSort(numeros,propiedad);
+miSort(numeros,propiedad);*/
 
 //Segunda Forma
 
@@ -53,4 +53,9 @@ function miSort2 (arreglo,callback){
     callback(arr)
 }
 
+function propiedad(arreglo){
+    console.log(arreglo);
+}
+
+let numeros = [50,12,15,25,3,5]
 miSort2(numeros,propiedad);

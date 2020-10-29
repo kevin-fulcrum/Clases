@@ -1,40 +1,68 @@
 import React, { useState } from 'react';
+import {data} from './constants/data'
+import {AnimalCard} from './components/Card/AnimalCard'
 import './App.css';
 import { Emojis, Instructions, Modal } from './components'
-//import Button from './components/Button';
-import Select from './components/Select';
 
 const emojis = [
   {emoji: '😃', name: "happy face" },
-  {emoji: '😭', name: "hug face" },
-  {emoji: '😈', name: "thinking face" }
+  {emoji: '😃', name: "hug face" },
+  {emoji: '😃', name: "thinking face" }
 ]
 
 const App = () => {
   const [visible, setVisible] = useState(false);
-  const [emoji, setEmoji] = useState('')
-  const [otroEmoji, setotroEmoji] = useState('💣')
-  const cambioEmoji = (event) => {
-    setotroEmoji('😃');
-  }
+  const [emojiId, setEmojiId] = useState()
+  const [animalModal, setAnimalModal] = useState(false)
+  const [animalInformation, setAnimalInformation] = useState([])
   const displayEmojiName = (event) => {
     setVisible(true)
-    setEmoji(event.target.id)
+    setEmojiId(event.target.id)
   }
   const closeModal = () => {
     setVisible(false)
+    setAnimalModal(false)
+  }
+
+  const showAdditional = (additional) => {
+    const ModalInformation = Object.entries(additional)
+      .map(information => `${information[0]} : ${information[1]}`)
+      .join('\n');
+      setAnimalModal(true)
+      setAnimalInformation(ModalInformation)
   }
   return (
+    <>
     <div className="container">
       <h1>Hello World!</h1>
-      <Instructions data={otroEmoji} onClick={cambioEmoji}/>
+      <Instructions />
       <p>I'm writing JSX</p>
       <Emojis data={emojis} onClick={displayEmojiName}/>
+      <h1>Animal</h1>
       <Modal visible={visible} closeModal={closeModal}>
-        {emoji}
+        {emojiId}
+      </Modal>
+      <Modal visible={animalModal} closeModal={closeModal}>
+          {animalInformation}
       </Modal>
     </div>
+    <div className="wrapperAnimalCard">
+        {data.map(animal => (
+          <AnimalCard
+            key={animal.name}
+            image={animal.image}
+            name={animal.name}
+            additional={animal.additional}
+            diet={animal.diet}
+            scientificName={animal.scientificName}
+            size={animal.size}
+            showAdditional={showAdditional}
+          />
+        ))}
+      </div>
+    </>
   );
 }
+
 
 export default App;

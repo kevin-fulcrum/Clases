@@ -25,6 +25,6 @@ export const data = [
             notes: 'There are three different species of zebra.',
             link: 'https://en.wikipedia.org/wiki/Zebra'
         },
-        image: 'https://images.unsplash.com/photo-1501706362039-c06b2d715385?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=250&q=60'
+        image: 'https://images.unsplash.com/photo-1501706362039-c06b2d715385?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=250&q=80'
     },
 ]

@@ -1,68 +1,91 @@
-import React, { useState } from 'react';
-import {data} from './constants/data'
-import {AnimalCard} from './components/Card/AnimalCard'
-import './App.css';
-import { Emojis, Instructions, Modal } from './components'
-
-const emojis = [
-  {emoji: '😃', name: "happy face" },
-  {emoji: '😃', name: "hug face" },
-  {emoji: '😃', name: "thinking face" }
-]
+import React, { useState, useEffect } from 'react'
+import configFire from './configFire'
+import Login from './components/Login';
+import Dashboard from './screens/Dashboard';
+import './App.css'
 
 const App = () => {
-  const [visible, setVisible] = useState(false);
-  const [emojiId, setEmojiId] = useState()
-  const [animalModal, setAnimalModal] = useState(false)
-  const [animalInformation, setAnimalInformation] = useState([])
-  const displayEmojiName = (event) => {
-    setVisible(true)
-    setEmojiId(event.target.id)
-  }
-  const closeModal = () => {
-    setVisible(false)
-    setAnimalModal(false)
-  }
+    const [user, setUser] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [emailError, setEmailError] = useState('')
+    const [passwordError, setPasswordError] = useState('')
+    const [hasAccount, setHasAccount] = useState('')
+    const handleLogin = () => {
+        configFire
+            .auth()
+            .signInWithEmailAndPassword(email, password)
+            .catch(err => {
+                switch(err.code) {
+                    case 'auth/invalid-email':
+                    case 'auth/user-disabled':
+                    case 'auth/user-not-found':
+                        setEmailError(err.message)
+                        break;
+                    case 'auth/wrong-password': 
+                        setPasswordError(err.message)
+                        break
+                    default: 
+                        setEmailError('Something went wrong!')
+                }
+            })
+    }
+    const handleSignUp = () => {
+        configFire
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            .catch(err => {
+                switch(err.code) {
+                    case 'auth/email-already-use':
+                    case 'auth/invalid-email':
+                        setEmailError(err.message)
+                        break;
+                    case 'auth/weak-password': 
+                        setPasswordError(err.message)
+                        break
+                    default: 
+                        setEmailError('Something went wrong!')
+                }
+            })
+    }
 
-  const showAdditional = (additional) => {
-    const ModalInformation = Object.entries(additional)
-      .map(information => `${information[0]} : ${information[1]}`)
-      .join('\n');
-      setAnimalModal(true)
-      setAnimalInformation(ModalInformation)
-  }
-  return (
-    <>
-    <div className="container">
-      <h1>Hello World!</h1>
-      <Instructions />
-      <p>I'm writing JSX</p>
-      <Emojis data={emojis} onClick={displayEmojiName}/>
-      <h1>Animal</h1>
-      <Modal visible={visible} closeModal={closeModal}>
-        {emojiId}
-      </Modal>
-      <Modal visible={animalModal} closeModal={closeModal}>
-          {animalInformation}
-      </Modal>
-    </div>
-    <div className="wrapperAnimalCard">
-        {data.map(animal => (
-          <AnimalCard
-            key={animal.name}
-            image={animal.image}
-            name={animal.name}
-            additional={animal.additional}
-            diet={animal.diet}
-            scientificName={animal.scientificName}
-            size={animal.size}
-            showAdditional={showAdditional}
-          />
-        ))}
-      </div>
-    </>
-  );
+    const handleLogout = () => {
+        configFire.auth().signOut();
+    }
+
+    const authListener = () => {
+        configFire.auth().onAuthStateChanged(user => {
+            if(user) {
+                setUser(user)
+            } else {
+                setUser('')
+            }
+        })
+    }
+
+    useEffect(() => {
+        authListener();
+    }, [user])
+    return (
+        <div className="app">
+            {user ? (
+                <Dashboard handleLogout={handleLogout} />
+            ) : (
+                <Login
+                email={email}
+                setEmail={setEmail}
+                password={password}
+                setPassword={setPassword}
+                handleLogin={handleLogin}
+                handleSignUp={handleSignUp}
+                hasAccount={hasAccount}
+                setHasAccount={setHasAccount}
+                emailError={emailError}
+                passwordError={passwordError}
+            />
+            ) }
+        </div>
+    )
 }
-
 
 export default App;

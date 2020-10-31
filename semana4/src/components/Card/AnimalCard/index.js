@@ -6,7 +6,7 @@ const AnimalCard = (props) => {
     const { image, name, additional, diet, scientificName, size, showAdditional } = props;
     return (
             <div className="animalWrapper">
-                <img src={image} alt="imagen"/>
+                <img className="image" src={image} alt="imagen"/>
                 <h2>{name}</h2>
                 <h3>{scientificName}</h3>
                 <h4>{size}kg</h4>

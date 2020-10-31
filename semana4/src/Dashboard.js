@@ -43,7 +43,7 @@ const Dashboard = () => {
         {emojiId}
       </Modal>
       <Modal visible={animalModal} closeModal={closeModal}>
-          {animalInformation}
+        {animalInformation}
       </Modal>
     </div>
     <div className="wrapperAnimalCard">

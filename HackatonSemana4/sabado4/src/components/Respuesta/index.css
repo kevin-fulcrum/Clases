@@ -2,7 +2,6 @@
     width: 70%;
     padding: 0 10%;
     display: flex;
-    min-height: 60vh;
     flex-direction: column;
     align-items: center;
   }
@@ -13,8 +12,20 @@
     display: block;
     font-size: 22px;
     line-height: 1;
+    flex-direction: column;
+    align-items: center;
   }
 
   .respuesta label b{
-    align-items: center;
+    text-align: center;
+    color:  #5c64bb;
+  }
+
+  .respuesta img{
+    width: 50%;
+  }
+
+  .respuesta p{
+    flex-direction: column;
+    text-align: center;
   }

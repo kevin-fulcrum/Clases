@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './index.css';
-import img from '../../Recursos/Imagenes/bienvenida.jpg'
+import img from '../../Recursos/Imagenes/bienvenida.png'
 
 const res = (props) => {
     const {nombre,apellido,telefono,fechaNacimiento,direccion}=props
@@ -9,11 +9,11 @@ const res = (props) => {
             <div className="respuesta">
             <p><label><b>BIENVENIDO</b></label>
             <img src={img} />
-            <label>{nombre}</label>
-            <label>{apellido}</label>
-            <label>{telefono}</label>
-            <label>{fechaNacimiento}</label>
-            <label>{direccion}</label></p>
+            <label><b>{nombre}</b></label>
+            <label><b>{apellido}</b></label>
+            <label><b>{telefono}</b></label>
+            <label><b>{fechaNacimiento}</b></label>
+            <label><b>{direccion}</b></label></p>
             </div>
             
         </>

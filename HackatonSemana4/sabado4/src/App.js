@@ -20,13 +20,13 @@ function App() {
     if(!nombre || !apellido || !telefono || !fechaNacimiento || !direccion){
       setMsgerror("*Campo obligatorio")
     }else{
-      setNombreres(nombre);
+      setNombreres(nombre)
       setApellidores(apellido)
       setTelefonores(telefono)
       setFechaNacimientores(fechaNacimiento)
       setDireccionres(direccion)
+      setMsgerror("")
     }
-    
   }
   return (
     <div className="App">

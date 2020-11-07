@@ -1,5 +1,4 @@
 import firebase from 'firebase'
-import dotenv from 'dotenv'
 
 console.log('process.env', process.env.apiKey)
 //Your web app's Firebase configuration

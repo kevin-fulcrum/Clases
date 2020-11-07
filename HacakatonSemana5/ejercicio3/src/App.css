@@ -1,0 +1,24 @@
+.login {
+  width: 70%;
+  padding: 0 15%;
+  display: flex;
+  min-height: 100vh;
+}
+
+.loginContainerprimero{
+  padding: 30px;
+  margin:  auto;
+  width: 50%;
+  /*max-width: 520px;*/
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #b8dc64;
+  box-shadow: 0 50px 70px -20px rgba(0,0,0, 0.8);
+  align-items: center;
+}
+
+.App{
+  background-color: #142c3c;
+}

@@ -1,21 +1,20 @@
 {
-  "name": "semana4",
+  "name": "react-context-tailwinds",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "dotenv": "^8.2.0",
-    "firebase": "^8.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-icons": "^3.11.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "tailwindcss": "^1.9.6",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "build:tailwind": "tailwindcss build src/stylesheet/app.css -o src/stylesheet/tailwind.output.css",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
